@@ -6,9 +6,9 @@ import (
 	"math"
 	"net/http"
 
-	"github.com/wwgberlin/go-funk/audio"
-	"github.com/wwgberlin/go-funk/renderer"
-	"github.com/wwgberlin/go-funk/sampler"
+	"github.com/akwick/go-funk/audio"
+	"github.com/akwick/go-funk/renderer"
+	"github.com/akwick/go-funk/sampler"
 )
 
 func handler(data audio.WavData, defaults *RequestData, rdr renderer.RenderFunc) func(w http.ResponseWriter, req *http.Request) {

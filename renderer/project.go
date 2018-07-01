@@ -23,5 +23,12 @@ func max(points []int) int {
 // therefore the result slice will be [3,6,18]
 
 func Project(in []int, newMax int) []int {
-	return nil
+	m := max(in)
+	ratio := float32(newMax) / float32(m)
+	retSlice := make([]int, len(in))
+	for i, val := range in {
+		res := float32(val) * ratio
+		retSlice[i] = int(res)
+	}
+	return retSlice
 }

@@ -16,4 +16,10 @@ type Img interface {
 // paint each pixel To color a pixel use img.Set
 
 func DrawRectangle(img Img, x1, y1, x2, y2 int, height int, colorFunc ColorFunc) {
+	for i:=x1; i < x2; i++ {
+		for j:= y1;  j < y2; j++ {
+			c := colorFunc.Color(x1, i, y1, j, height)
+			img.Set(i, j, c)
+		}
+	}
 }

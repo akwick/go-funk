@@ -41,5 +41,15 @@ func Gopher(w io.Writer, points []int, duration time.Duration, conf Config) {
 // image.NewPaletted and image.Rect(...)
 
 func RenderGopherFrame(v int, width, height int, colorer Colorer) *image.Paletted {
-	return nil
+	x1 := (width - v )/ 2
+	x2 := x1 + v
+
+	y1 := (height - v )/ 2
+	y2 := y1 + v
+
+	rect := image.Rect(0, 0, width, height)
+	img := image.NewPaletted(rect, colorer.Palette())
+	DrawRectangle(img, x1, y1, x2, y2, height, colorer.Fn)
+
+	return img
 }

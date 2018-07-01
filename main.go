@@ -10,9 +10,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/wwgberlin/go-funk/audio"
-	"github.com/wwgberlin/go-funk/renderer"
-	"github.com/wwgberlin/go-funk/sampler"
+	"github.com/akwick/go-funk/audio"
+	"github.com/akwick/go-funk/renderer"
+	"github.com/akwick/go-funk/sampler"
 )
 
 const filePath = "public/rick/fixture.wav"

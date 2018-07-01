@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/wwgberlin/go-funk/renderer"
-	"github.com/wwgberlin/go-funk/sampler"
+	"github.com/akwick/go-funk/renderer"
+	"github.com/akwick/go-funk/sampler"
 )
 
 type RequestData struct {

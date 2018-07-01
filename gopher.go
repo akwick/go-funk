@@ -2,9 +2,10 @@ package main
 
 import (
 	"image"
-	"image/color"
 
-	"github.com/wwgberlin/go-funk/renderer"
+	"github.com/akwick/go-funk/renderer"
+
+	"image/color"
 )
 
 // ColorGopherFunc takes an image and returns a renderer.ColorFunc
@@ -22,9 +23,12 @@ import (
 
 func ColorGopherFunc(img image.Image) renderer.ColorFunc {
 	// to get the original image height uncomment this:
-	//imgHeight := img.Bounds().Max.Y - img.Bounds().Min.Y
+	imgHeight := img.Bounds().Max.Y - img.Bounds().Min.Y
 	return func(x, xOffset, y, yOffset, height int) color.Color {
-		return color.Black
+		ratio := float32(imgHeight) / float32(height)
+		origx := float32((x - xOffset)) * ratio
+		origy := float32((y - yOffset)) * ratio
+		return img.At(int(origx), int(origy))
 	}
 }
 

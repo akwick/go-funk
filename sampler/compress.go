@@ -17,7 +17,29 @@ var errCountInvalid = errors.New("count must be <= length of the slice")
 // * hint: use windowSize
 
 func Compress(samples []int, count int, fn SamplerFunc) ([]int, error) {
-	return nil, nil
+	wsize := windowSize(len(samples), count)
+	retarr := make([]int, count)
+	if len(samples) > 0 {
+		for i := 0; i < count; i++ {
+			var window []int
+			// No content in the samples
+			if (i*wsize > len(samples)) {
+				// nothing do to here
+			} else {
+				// Last windows with content of samples
+				if (i*wsize < len(samples) && (i+1)*wsize+1 > len(samples)) {
+					window = samples[i*wsize:]
+				}
+				if (i*wsize < len(samples) && (i+1)*wsize < len(samples)) {
+					// Sample contains content for the window size
+					window = samples[i*wsize:(i+1)*wsize]
+				}
+			}
+			retarr[i] = fn(window)
+		}
+		return retarr, nil
+	}
+	return nil, errors.New("expected a sample with content")
 }
 
 func windowSize(l, c int) int {
