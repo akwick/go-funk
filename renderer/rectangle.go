@@ -18,7 +18,7 @@ type Img interface {
 func DrawRectangle(img Img, x1, y1, x2, y2 int, height int, colorFunc ColorFunc) {
 	for i:=x1; i < x2; i++ {
 		for j:= y1;  j < y2; j++ {
-			c := colorFunc.Color(x1, i, y1, j, height)
+			c := colorFunc.Color(i,x1, j, y1, height)
 			img.Set(i, j, c)
 		}
 	}
